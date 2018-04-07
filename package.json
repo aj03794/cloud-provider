@@ -1,0 +1,30 @@
+{
+    "name": "cloud-provider",
+    "version": "1.0.0",
+    "description": "Abstract cloud provider away from an application",
+    "main": "index.js",
+    "scripts": {
+        "build": "rm -rf dist && babel src --out-dir dist",
+        "deploy": "npm run build && node scripts/deploy.js"
+    },
+    "keywords": [],
+    "author": "Adam Johnston",
+    "license": "ISC",
+    "dependencies": {
+        "lodash": "^4.17.5",
+        "uuid": "^3.2.1"
+    },
+    "devDependencies": {
+        "babel-cli": "^6.26.0",
+        "babel-loader": "^7.1.4",
+        "babel-preset-env": "^1.6.1",
+        "babel-register": "^6.26.0",
+        "request": "^2.85.0",
+        "webpack-cli": "^2.0.13"
+    },
+    "babel": {
+        "presets": [
+            "env"
+        ]
+    }
+}
