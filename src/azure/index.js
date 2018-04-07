@@ -1,5 +1,3 @@
-const azure = () => {
+export const azure = () => {
 	return { cloudProvider: 'azure' }
 }
-
-export default azure

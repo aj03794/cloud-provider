@@ -1,5 +1,3 @@
-const aws = () => {
+export const aws = () => {
 	return { cloudProvider: 'aws' }
 }
-
-export default aws
