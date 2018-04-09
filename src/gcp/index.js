@@ -1,7 +1,5 @@
-// import
-
 export const gcp = (services) => {
-	console.log('services object', services)
+	console.log('gcp services', services)
 	return import(`./services`).then(gcpServices => {
 		return Promise.all(callServices(gcpServices, services))
 		.then(() => {
@@ -18,6 +16,10 @@ export const callServices = (cloudServices, manifestServices) => {
 		const values = Object.values(service)[0]
 		return cloudServices[key]
 			? cloudServices[key](values)
-			: null
+			: handleNonExistentService(service)
 	})
+}
+
+export const handleNonExistentService = (service) => {
+	console.log('Service does not exist: ', service)
 }
