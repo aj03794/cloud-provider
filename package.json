@@ -8,6 +8,7 @@
         "gcp": "npm run build && node dist/index.js gcp",
         "aws": "npm run build && node dist/index.js aws",
         "azure": "npm run build && node dist/index.js azure",
+        "start": "npm run build && node dist/index.js",
         "test": "npm run build && ./node_modules/mocha/bin/_mocha 'dist/**/*.test.js'"
 
     },
