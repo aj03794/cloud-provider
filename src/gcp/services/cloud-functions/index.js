@@ -2,10 +2,10 @@ import { exec } from 'child_process'
 import { resolve as resolvePath } from 'path'
 
 export const createCloudFunction = ({ appName, entryPoint }) => new Promise((resolve, reject) => {
-	console.log('appName', appName)
-	console.log('entryPoint', entryPoint)
-	const appLocation = resolvePath(__dirname, '../../../../../', 'example-app')
-	console.log('appLocation', appLocation)
+	// console.log('appName', appName)
+	// console.log('entryPoint', entryPoint)
+	// const appLocation = resolvePath(__dirname, '../../../../../', 'example-app')
+	// console.log('appLocation', appLocation)
 	// return exec(`gcloud beta functions deploy ${appName} --entry-point ${entryPoint} --trigger-http`,
 	// 	{
 	// 		cwd: appLocation
