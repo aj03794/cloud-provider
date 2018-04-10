@@ -3,8 +3,8 @@ export const callServices = (cloudServices, manifestServices) => {
 		const serviceName = Object.keys(service)
 		return cloudServices[serviceName] ? true : handleNonExistentService(service)
 	}).map(service => {
-		const serviceName = Object.keys(service)
-		const serviceParams = Object.values(service)
+		const serviceName = Object.keys(service)[0]
+		const serviceParams = Object.values(service)[0]
 		return cloudServices[serviceName](serviceParams)
 	})
 }

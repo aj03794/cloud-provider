@@ -6,6 +6,7 @@ export const deployApplication = () => {
 	return names.map(name => {
 		return import(`./${name.toLowerCase()}/index.js`).then(cloudProvider => {
 			const { services } = manifest[name]
+			console.log(`Manifest defined services for ${name}`, services)
 			return cloudProvider[name.toLowerCase()]({ services, callServices })
 		})
 	})
