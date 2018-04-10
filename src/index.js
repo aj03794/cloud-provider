@@ -1,23 +1,16 @@
 const manifest = require('../../example-app/manifest.json')
+import { callServices } from './utils/call-services'
 
 export const deployApplication = () => {
-	// const { name, services } = manifest
-	// return import(`./${name.toLowerCase()}/index.js`).then(cloudProvider => {
-	// 	// console.log('cloudProvider', cloudProvider[name.toLowerCase()])
-	// 	return cloudProvider[name.toLowerCase()](services)
-	// })
 	const names = Object.keys(manifest)
 	return names.map(name => {
-		// return import(`./${name.toLowerCase()}/index.js`).then(cloudProvider => {
-			// const services = Object.values(manifest[name])
-			console.log('name', name)
-			console.log('asdfa', manifest[name].services)
-			// console.log('services', services)
-			// console.log('cloudProvider', cloudProvider[name.toLowerCase()])
-			// return cloudProvider[name.toLowerCase()](services)
-		// })
+		return import(`./${name.toLowerCase()}/index.js`).then(cloudProvider => {
+			const { services } = manifest[name]
+			return cloudProvider[name.toLowerCase()]({ services, callServices })
+		})
 	})
-	// console.log('names', names)
 }
 
-deployApplication()
+const z = deployApplication()
+
+Promise.all(z).then(result => console.log('result', result))

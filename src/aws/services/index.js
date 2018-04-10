@@ -1,5 +1,5 @@
-import { createLambdaFunction  as lambdaFunction } from './cloud-functions'
+import { createLambda  as lambda } from './lambda'
 
 export {
-	lambdaFunction
+	lambda
 }

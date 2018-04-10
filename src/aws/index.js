@@ -1,25 +1,13 @@
-export const aws = (services) => {
-	console.log('aws services', services)
+export const aws = ({ services, callServices}) => {
+	console.log('Manfiest defined aws services', services)
 	return import(`./services`).then(awsServices => {
 		return Promise.all(callServices(awsServices, services))
-		.then(() => {
+		.then(result => {
+			console.log('AWS result', result)
 			return {
-				cloudProvider: 'aws'
+				cloudProvider: 'aws',
+				result
 			}
 		})
 	})
-}
-
-export const callServices = (cloudServices, manifestServices) => {
-	return manifestServices.filter(service => {
-		const key = Object.keys(service)[0]
-		const values = Object.values(service)[0]
-		return cloudServices[key]
-			? cloudServices[key](values)
-			: handleNonExistentService(service)
-	})
-}
-
-export const handleNonExistentService = (service) => {
-	console.log('Service does not exist: ', service)
 }
